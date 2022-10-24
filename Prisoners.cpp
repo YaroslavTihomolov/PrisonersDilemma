@@ -44,8 +44,19 @@ void Game::Detailed(){
         cur_step2 = strat_2.Move();
         cur_step3 = strat_3.Move();
         AddPoints(NumberOfVariant());
-        Output(NumberOfVariant());
+        OutputCurMove(NumberOfVariant());
+        OutputResult();
     }
+}
+
+void Game::Fast(int count_of_moves){
+    for (int i = 0; i < count_of_moves; i++) {
+        cur_step1 = strat_1.Move();
+        cur_step2 = strat_2.Move();
+        cur_step3 = strat_3.Move();
+        AddPoints(NumberOfVariant());
+    }
+    OutputResult();
 }
 
 int Game::NumberOfVariant () {
@@ -62,17 +73,41 @@ int Game::NumberOfVariant () {
 Game::Game(Strategy & s_1, Strategy & s_2, Strategy & s_3):
     strat_1(s_1), strat_2(s_2), strat_3(s_3) {}
 
+Game::Game(Strategy && s_1, Strategy && s_2, Strategy && s_3):
+        strat_1(s_1), strat_2(s_2), strat_3(s_3) {}
+
 void Game::AddPoints(int number_of_variant) {
     strat_1.points += matrix.game_matrix[number_of_variant][0];
     strat_2.points += matrix.game_matrix[number_of_variant][1];
     strat_3.points += matrix.game_matrix[number_of_variant][2];
 }
 
-void Game::Output(int number) {
-    cout << "s1 " << "s2 "<<"s3\n";
-    cout << cur_step1 << "  " << cur_step2 << "  " << cur_step3 << '\n';
-    cout << matrix.game_matrix[number][0]<< "  " << matrix.game_matrix[number][1] << "  " << matrix.game_matrix[number][2] << '\n';
+Strategy Game::ChooseStrategy(int strategy) {
+    if (strategy == 1) {
+        Strategy_1 strateg_1;
+        return strateg_1;
+    }
+    if (strategy == 2) {
+        Strategy_2 strateg_2;
+        return strateg_2;
+    }
+    if (strategy == 3) {
+        Strategy_3 strateg_3;
+        return strateg_3;
+    }
+    Strategy s;
+    return s;
+}
+
+
+void Game::OutputResult() {
     cout << "s1 points:" << strat_1.points << '\n';
     cout << "s2 points:" << strat_2.points << '\n';
     cout << "s3 points:" << strat_3.points << '\n';
+}
+
+void Game::OutputCurMove(int number) {
+    cout << "s1 " << "s2 "<<"s3\n";
+    cout << cur_step1 << "  " << cur_step2 << "  " << cur_step3 << '\n';
+    cout << matrix.game_matrix[number][0]<< "  " << matrix.game_matrix[number][1] << "  " << matrix.game_matrix[number][2] << '\n';
 }

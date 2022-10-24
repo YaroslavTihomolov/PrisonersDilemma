@@ -47,11 +47,14 @@ class Game {
 public:
     Matrix matrix;
     Game(Strategy & s_1, Strategy & s_2, Strategy & s_3);
+    Game(Strategy && s_1, Strategy && s_2, Strategy && s_3);
+    Strategy ChooseStrategy(int);
     void Detailed();
-    void fast();
+    void Fast(int);
     int NumberOfVariant ();
     void AddPoints(int number_of_variant);
-    void Output(int);
+    void OutputResult();
+    void OutputCurMove(int);
 };
 
 #endif //PRISONERSDILEMMA_HPRISONERS_H
