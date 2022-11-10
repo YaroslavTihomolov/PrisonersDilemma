@@ -9,9 +9,11 @@
 
 class Strategy_4: public Strategy {
 private:
+    std::ifstream conf;
     int count_of_moves = 0;
+    char FirstMove, NumOfRepeatStrategy;
 public:
-    Strategy_4() { num_of_strategy = 4; }
+    Strategy_4();
     char Move();
 };
 

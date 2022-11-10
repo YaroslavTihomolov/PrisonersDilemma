@@ -11,7 +11,8 @@
 class Matrix {
 public:
     std::map<int, int[3]> game_matrix;
-    Matrix();
+    Matrix() = default;
+    void ReadMatrix(std::string);
 };
 
 #endif //PRISONERSDILEMMA_CLASSMATRIX_H

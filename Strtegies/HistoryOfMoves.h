@@ -21,8 +21,6 @@ public:
 
     void AddMoves(char m_1, char m_2, char m_3);
 
-    void Print();
-
 private:
     std::vector <char> matrix;
     MovesHistory(){}

@@ -10,7 +10,7 @@ void TheStrategyFactory::RegisterStrategy(const int id, const strategyInstanceGe
 Strategy* TheStrategyFactory::CreateStrategy(int strtegyid) {
     auto it = strtegies_.find(strtegyid);
     if (it == strtegies_.end()) {
-        throw std::runtime_error("Неизвестный идентификатор");
+        throw ("Неизвестный идентификатор");
     }
     return (it->second());
 }

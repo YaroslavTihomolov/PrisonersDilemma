@@ -3,9 +3,9 @@
 //
 #include "ClassMatrix.h"
 
-Matrix::Matrix() {
+void Matrix::ReadMatrix(std::string file_name) {
     std::ifstream fin;
-    fin.open("Matrix.txt");
+    fin.open(file_name);
     char symbol;
     int count_of_digit = 0;
     while (fin >> symbol && symbol != EOF) {

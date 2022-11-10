@@ -1,37 +1,27 @@
 #include "ClassGame.h"
+#include "Detailed.h"
+#include "Fast.h"
 
-Game::Game(int s_1, int s_2, int s_3) {
-    participant_1 = TheStrategyFactory::Instance().CreateStrategy(s_1);
-    participant_2 = TheStrategyFactory::Instance().CreateStrategy(s_2);
-    participant_3 = TheStrategyFactory::Instance().CreateStrategy(s_3);
-    participant_1->AddNum(1);
-    participant_2->AddNum(2);
-    participant_3->AddNum(3);
+Game::Game(int argc, char** argv) {
+    Parser input(argc, argv);
+    if (input.mode == "detailed")
+        Detailed(NameFromStringToChar(input.name[0]),
+                 NameFromStringToChar(input.name[1]),
+                 NameFromStringToChar(input.name[2]),
+                 input.matrix_file);
+    if (input.mode == "fast")
+        Fast(NameFromStringToChar(input.name[0]),
+             NameFromStringToChar(input.name[1]),
+             NameFromStringToChar(input.name[2]),
+             input.matrix_file, input.count_of_steps);
 }
 
-void Game::Detailed(){
-    string flag;
-    while (true) {
-        std::cout << "Press any button for next step or 'quit' for end game"<< std::endl;
-        cin >> flag;
-        if (flag == "quit") break;
-        cur_step1 = participant_1->Move();
-        cur_step2 = participant_2->Move();
-        cur_step3 = participant_3->Move();
-        AddPointsAndAddMove(NumberOfVariant());
-        OutputCurMove(NumberOfVariant());
-        OutputResult();
-    }
-}
-
-void Game::Fast(int count_of_moves){
-    for (int i = 0; i < count_of_moves; i++) {
-        cur_step1 = participant_1->Move();
-        cur_step2 = participant_2->Move();
-        cur_step3 = participant_3->Move();
-        AddPointsAndAddMove(NumberOfVariant());
-    }
-    OutputResult();
+int Game::NameFromStringToChar(std::string tmp) {
+    if (tmp == "ALWAYS_C") return 1;
+    if (tmp == "ALWAYS_D") return 2;
+    if (tmp == "RANDOM_MOVE") return 3;
+    if (tmp == "TIT_FOR_TAT") return 4;
+    throw("Wrong input");
 }
 
 int Game::NumberOfVariant () {
@@ -106,5 +96,8 @@ void Game::ChooseStrategy(int s_1, int s_2, int s_3) {
     participant_1 = TheStrategyFactory::Instance().CreateStrategy(s_1);
     participant_2 = TheStrategyFactory::Instance().CreateStrategy(s_2);
     participant_3 = TheStrategyFactory::Instance().CreateStrategy(s_3);
+    participant_1->AddNum(1);
+    participant_2->AddNum(2);
+    participant_3->AddNum(3);
 }
 
