@@ -1,6 +1,7 @@
 #include "ClassGame.h"
-#include "Detailed.h"
-#include "Fast.h"
+#include "Detailed/Detailed.h"
+#include "Fast/Fast.h"
+#include "Tournament/Tournament.h"
 
 Game::Game(int argc, char** argv) {
     Parser input(argc, argv);
@@ -9,11 +10,15 @@ Game::Game(int argc, char** argv) {
                  NameFromStringToChar(input.name[1]),
                  NameFromStringToChar(input.name[2]),
                  input.matrix_file);
+
     if (input.mode == "fast")
         Fast(NameFromStringToChar(input.name[0]),
              NameFromStringToChar(input.name[1]),
              NameFromStringToChar(input.name[2]),
              input.matrix_file, input.count_of_steps);
+
+    if (input.mode == "tournament")
+        Tournament(input.matrix_file, input.count_of_steps);
 }
 
 int Game::NameFromStringToChar(std::string tmp) {
@@ -21,6 +26,7 @@ int Game::NameFromStringToChar(std::string tmp) {
     if (tmp == "ALWAYS_D") return 2;
     if (tmp == "RANDOM_MOVE") return 3;
     if (tmp == "TIT_FOR_TAT") return 4;
+    if (tmp == "GRIM_TRIGGER") return 5;
     throw("Wrong input");
 }
 
@@ -53,30 +59,6 @@ void Game::ChooseWinner(int &max_points, int &num_of_winner, int i, int j, int h
         max_points = participant_3->points;
         num_of_winner = h;
     }
-}
-
-void Game::Tournament(int count_of_moves) {
-    int max_points = 0;
-    int num_of_winner;
-    for (int i = 1; i < 3; i++) {
-        for (int j = i + 1; j < 4; j++) {
-            for (int h = j + 1; h < 5; h++) {
-                this->ChooseStrategy(i, j, h);
-                participant_1->AddNum(1);
-                participant_2->AddNum(2);
-                participant_3->AddNum(3);
-                for (int g = 0; g < count_of_moves; g++) {
-                    cur_step1 = participant_1->Move();
-                    cur_step2 = participant_2->Move();
-                    cur_step3 = participant_3->Move();
-                    AddPointsAndAddMove(NumberOfVariant());
-                }
-                MovesHistory::Instance().Clear();
-                ChooseWinner(max_points, num_of_winner, i, j, h);
-            }
-        }
-    }
-    cout << "The winner is Strategy " << num_of_winner << " with " << max_points << " points!" << endl;
 }
 
 

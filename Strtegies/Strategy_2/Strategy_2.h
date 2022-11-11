@@ -4,7 +4,7 @@
 
 #ifndef PRISONERSDILEMMA_STRATEGY_2_H
 #define PRISONERSDILEMMA_STRATEGY_2_H
-#include "ClassStrategy.h"
+#include "../ClassStrategy.h"
 
 class Strategy_2: public Strategy {
 public:

@@ -5,7 +5,7 @@
 #ifndef PRISONERSDILEMMA_DETAILED_H
 #define PRISONERSDILEMMA_DETAILED_H
 
-#include "ClassGame.h"
+#include "../ClassGame.h"
 
 class Detailed: public Game{
 public:

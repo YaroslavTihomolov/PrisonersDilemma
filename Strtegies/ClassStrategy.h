@@ -5,8 +5,8 @@
 #ifndef PRISONERSDILEMMA_CLASSSTRATEGY_H
 #define PRISONERSDILEMMA_CLASSSTRATEGY_H
 #include <iostream>
-#include "StrategyFactoryRegistration.h"
-#include "HistoryOfMoves.h"
+#include "StrategyFactory/StrategyFactoryRegistration.h"
+#include "Moves_History/HistoryOfMoves.h"
 
 using namespace std;
 

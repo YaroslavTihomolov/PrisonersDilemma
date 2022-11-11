@@ -6,7 +6,7 @@
 #define PRISONERSDILEMMA_STRATEGYFACTORYREGISTRATION_H
 
 #include "TheStrategyFactory.h"
-#include "ClassStrategy.h"
+#include "../ClassStrategy.h"
 
 namespace StrategyFactoryRegistration {
     template <typename T>

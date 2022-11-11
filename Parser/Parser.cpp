@@ -8,7 +8,7 @@ Parser::Parser(int argc, char** argv) {
     desc.add_options()
             ("help", "produce help message")
             ("mode", po::value<std::string> (&mode), "--mode=[detailed|fast|tournament]")
-            ("strategy", po::value< std::vector<std::string> >(&name), "--strategy={ALWAYS_C|ALWAYS_D|RANDOM_MOVE|TIT_FOR_TAT}")
+            ("strategy", po::value< std::vector<std::string> >(&name), "--strategy={ALWAYS_C|ALWAYS_D|RANDOM_MOVE|TIT_FOR_TAT|GRIM_TRIGGER}")
             ("steps", po::value<int>(&count_of_steps)->default_value(10), "--steps")
             ("configs, c", po::value<std::vector<std::string>  >(&conf_files), "--configs[conf4.txt]")
             ("matrix", po::value<std::string> (&matrix_file), "--matrix[Matrix.txt] .txt")

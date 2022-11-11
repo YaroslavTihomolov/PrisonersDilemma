@@ -5,7 +5,7 @@
 #ifndef PRISONERSDILEMMA_FAST_H
 #define PRISONERSDILEMMA_FAST_H
 
-#include "ClassGame.h"
+#include "../ClassGame.h"
 
 class Fast: public Game{
 public:

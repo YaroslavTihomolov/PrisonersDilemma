@@ -5,7 +5,7 @@
 #ifndef PRISONERSDILEMMA_STRATEGY_4_H
 #define PRISONERSDILEMMA_STRATEGY_4_H
 #include <fstream>
-#include "ClassStrategy.h"
+#include "../ClassStrategy.h"
 
 class Strategy_4: public Strategy {
 private:
