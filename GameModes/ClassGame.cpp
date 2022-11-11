@@ -49,15 +49,20 @@ void Game::AddPointsAndAddMove(int number_of_variant) {
 }
 
 void Game::ChooseWinner(int &max_points, int &num_of_winner, int i, int j, int h) {
+    int cur_max, num_of_cur_winner;
     if (participant_1->points > participant_2->points && participant_1->points > participant_3->points) {
-        max_points = participant_1->points;
-        num_of_winner = i;
+        cur_max = participant_1->points;
+        num_of_cur_winner = i;
     } else if (participant_2->points > participant_3->points) {
-        max_points = participant_2->points;
-        num_of_winner = j;
+        cur_max = participant_2->points;
+        num_of_cur_winner = j;
     } else {
-        max_points = participant_3->points;
-        num_of_winner = h;
+        cur_max = participant_3->points;
+        num_of_cur_winner = h;
+    }
+    if (cur_max > max_points) {
+        max_points = cur_max;
+        num_of_winner = num_of_cur_winner;
     }
 }
 
