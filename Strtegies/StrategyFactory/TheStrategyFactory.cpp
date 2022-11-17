@@ -3,12 +3,12 @@
 //
 #include "TheStrategyFactory.h"
 
-void TheStrategyFactory::RegisterStrategy(const int id, const strategyInstanceGenerator & strategyFn) {
-    strtegies_.insert(std::make_pair(id, strategyFn));
+void TheStrategyFactory::RegisterStrategy(const std::string name, const strategyInstanceGenerator & strategyFn) {
+    strtegies_.insert(std::make_pair(name, strategyFn));
 }
 
-Strategy* TheStrategyFactory::CreateStrategy(int strtegyid) {
-    auto it = strtegies_.find(strtegyid);
+Strategy* TheStrategyFactory::CreateStrategy(std::string strategy_name) {
+    auto it = strtegies_.find(strategy_name);
     if (it == strtegies_.end()) {
         throw ("Неизвестный идентификатор");
     }

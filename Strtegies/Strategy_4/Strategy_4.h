@@ -18,7 +18,7 @@ public:
 };
 
 namespace {
-    StrategyFactoryRegistration::StrategyFactoryRegistration<Strategy_4> Strategy_4(4);
+    StrategyFactoryRegistration::StrategyFactoryRegistration<Strategy_4> Strategy_4("TIT_FOR_TAT");
 }
 
 #endif //PRISONERSDILEMMA_STRATEGY_4_H

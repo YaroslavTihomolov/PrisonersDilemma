@@ -11,11 +11,41 @@ Parser::Parser(int argc, char** argv) {
             ("strategy", po::value< std::vector<std::string> >(&name), "--strategy={ALWAYS_C|ALWAYS_D|RANDOM_MOVE|TIT_FOR_TAT|GRIM_TRIGGER}")
             ("steps", po::value<int>(&count_of_steps)->default_value(10), "--steps")
             ("configs, c", po::value<std::vector<std::string>  >(&conf_files), "--configs[conf4.txt]")
-            ("matrix", po::value<std::string> (&matrix_file), "--matrix[Matrix.txt] .txt")
+            ("matrix", po::value<std::string> (&matrix_file), "--matrix[Matrix.txt]")
     ;
 
     po::store(po::parse_command_line(argc, argv, desc), vm);
     po::notify(vm);
+
+    std::vector< std::string > strategies = { "ALWAYS_C", "ALWAYS_D", "RANDOM_MOVE", "TIT_FOR_TAT", "GRIM_TRIGGER", "META_STRATEGY" };
+    for (int i = 0; i < 6; i++) {
+        int flag = 0;
+        for (auto j = name.begin(); j < name.end(); j++) {
+            if (strategies[i] == *j) {
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 0)
+            throw std::invalid_argument("Wrong name of strategy.\n");
+    }
+
+    std::vector< std::string > config_files;
+    config_files  = {"conf4.txt", "conf5.txt", "conf6.txt"};
+    for (int i = 0; i < 3; i++) {
+        int flag = 0;
+        for (auto j = conf_files.begin(); j < conf_files.end(); j++) {
+            if (config_files[i] == *j) {
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 0)
+            throw std::invalid_argument("Wrong name of config file.\n");
+    }
+
+    if (matrix_file != "Matrix.txt")
+        throw std::invalid_argument("Wrong name of matrix file.\n");
 
     if (vm.count("help")) {
         std::cout << desc;

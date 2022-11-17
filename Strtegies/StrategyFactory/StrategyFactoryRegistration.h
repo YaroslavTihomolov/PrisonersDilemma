@@ -13,9 +13,9 @@ namespace StrategyFactoryRegistration {
     class StrategyFactoryRegistration
     {
     public:
-        StrategyFactoryRegistration(const int id) {
+        StrategyFactoryRegistration(const std::string name) {
             TheStrategyFactory::Instance().RegisterStrategy(
-                    id,
+                    name,
                     []() { return static_cast<Strategy*>(new T()); }
             );
         }

@@ -6,6 +6,7 @@
 #define PRISONERSDILEMMA_TheStrategyFactory_H
 
 #include <unordered_map>
+#include <string>
 
 class Strategy;
 
@@ -19,11 +20,11 @@ public:
         return theSingleInstance;
     }
 
-    void RegisterStrategy(const int, const strategyInstanceGenerator&);
-    Strategy* CreateStrategy(int);
+    void RegisterStrategy(const std::string, const strategyInstanceGenerator&);
+    Strategy* CreateStrategy(std::string);
 
 private:
-    std::unordered_map <int, strategyInstanceGenerator> strtegies_;
+    std::unordered_map <std::string, strategyInstanceGenerator> strtegies_;
     TheStrategyFactory(){}
     TheStrategyFactory(const TheStrategyFactory& root) = delete;
     TheStrategyFactory& operator=(const TheStrategyFactory) = delete;

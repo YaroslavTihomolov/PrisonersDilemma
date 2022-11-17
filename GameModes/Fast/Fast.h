@@ -9,7 +9,7 @@
 
 class Fast: public Game{
 public:
-    Fast(int, int, int, std::string, int);
+    Fast(std::string, std::string, std::string, std::string, int);
 };
 
 #endif //PRISONERSDILEMMA_FAST_H

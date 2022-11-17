@@ -7,18 +7,20 @@
 #include <iostream>
 #include "StrategyFactory/StrategyFactoryRegistration.h"
 #include "Moves_History/HistoryOfMoves.h"
+#include "C:\CLionProjects\PrisonersDilemma\GameModes\ClassGame.h"
+#include "C:\CLionProjects\PrisonersDilemma\Strtegies\InputInformation\Input.h"
 
 using namespace std;
 
 class Strategy {
 public:
-    int num_of_strategy;
+    std::string name_of_strategy;
     int num_in_cur_game;
-    Strategy() { num_of_strategy = 0; }
+    Strategy() = default;
     void AddNum(int);
     virtual char Move();
     int points = 0;
-    int GetNum();
+    std::string GetName();
     virtual ~Strategy() = default;
 };
 

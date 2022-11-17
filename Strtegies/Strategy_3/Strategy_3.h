@@ -9,12 +9,12 @@
 
 class Strategy_3: public Strategy {
 public:
-    Strategy_3() { num_of_strategy = 3; }
+    Strategy_3() { name_of_strategy = "RANDOM_MOVE"; }
     char Move();
 };
 
 namespace {
-    StrategyFactoryRegistration::StrategyFactoryRegistration<Strategy_3> Strategy_3(3);
+    StrategyFactoryRegistration::StrategyFactoryRegistration<Strategy_3> Strategy_3("RANDOM_MOVE");
 }
 
 #endif //PRISONERSDILEMMA_STRATEGY_3_H

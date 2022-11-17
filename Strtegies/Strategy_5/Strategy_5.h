@@ -19,6 +19,6 @@ public:
 };
 
 namespace {
-    StrategyFactoryRegistration::StrategyFactoryRegistration<Strategy_5> Strategy_5(5);
+    StrategyFactoryRegistration::StrategyFactoryRegistration<Strategy_5> Strategy_5("GRIM_TRIGGER");
 }
 #endif //PRISONERSDILEMMA_STRATEGY_5_H

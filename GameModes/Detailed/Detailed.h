@@ -9,7 +9,7 @@
 
 class Detailed: public Game{
 public:
-    Detailed(int, int, int, std::string);
+    Detailed(std::string, std::string, std::string, std::string);
 };
 
 

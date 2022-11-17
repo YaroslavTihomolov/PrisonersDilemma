@@ -4,9 +4,9 @@
 #include "Strategy_5.h"
 
 Strategy_5::Strategy_5() {
-    num_of_strategy = 5;
+    name_of_strategy = "GRIM_TRIGGER";
     count_of_moves = 0;
-    conf.open("conf5.txt");
+    conf.open(InputInf::Instance().GetName(5));
     if (!conf) throw ("File \"conf5.txt\" not open");
     conf.get(NumOfStrategy);
     flag = 0;

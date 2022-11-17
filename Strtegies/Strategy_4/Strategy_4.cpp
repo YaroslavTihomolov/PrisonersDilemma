@@ -4,8 +4,8 @@
 #include "Strategy_4.h"
 
 Strategy_4::Strategy_4() {
-    num_of_strategy = 4;
-    conf.open("conf4.txt");
+    name_of_strategy = "TIT_FOR_TAT";
+    conf.open(InputInf::Instance().GetName(4));
     if (!conf) throw ("File \"conf4.txt\" not open");
     conf.get(FirstMove);
     conf.get(NumOfRepeatStrategy);

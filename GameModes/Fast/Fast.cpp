@@ -3,7 +3,7 @@
 //
 #include "Fast.h"
 
-Fast::Fast(int s_1, int s_2, int s_3, std::string matrix_file, int count_of_moves){
+Fast::Fast(std::string s_1, std::string s_2, std::string s_3, std::string matrix_file, int count_of_moves){
     ChooseStrategy(s_1, s_2, s_3);
     matrix.ReadMatrix(matrix_file);
     string flag;

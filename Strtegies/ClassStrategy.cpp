@@ -8,6 +8,6 @@ void Strategy::AddNum(int num) {
     num_in_cur_game = num;
 }
 
-int Strategy::GetNum() {
-    return num_of_strategy;
+std::string Strategy::GetName() {
+    return name_of_strategy;
 }
